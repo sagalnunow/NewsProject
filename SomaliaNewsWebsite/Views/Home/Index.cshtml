@@ -1,0 +1,91 @@
+﻿@model IEnumerable<SomaliaNewsWebsite.Models.News>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+
+<div class="container" style="background-color: dimgrey; height: 900px;">
+
+    <div class="row">
+
+        <div class="col-md-3 text-center" style="background-color: green; color: white;">
+
+            @foreach (var news in Model.Where(x => x.Side == "Left"))
+            {
+            <div class="text-center">
+                <h3 style="color: maroon;">@news.Title</h3>
+                @if (news.Image != null)
+                {
+                    <img class="img img-thumbnail" style="max-height: 100px; min-height:80px; min-width: 150px; max-width: 200px; " src="data:image;base64, @Convert.ToBase64String(news.Image)" />
+                }
+                <p>
+                    @news.NewsContext
+                </p>
+                <a href="/Home/Details/@news.Id" class="btn btn-sm btn-success" >Red More..</a>
+            </div>
+                <hr />
+            }
+
+
+        </div>
+
+
+
+        <div class="col-md-6 text-center" style="background-color:orange;">
+
+
+            @foreach (var news in Model.Where(x => x.Side == "Middle"))
+            {
+                <div class="text-center">
+                    <h3 style="color: maroon;">@news.Title</h3>
+                    @if (news.Image != null)
+                    {
+                        <img class="img img-thumbnail" style="max-height: 100px; min-height:80px; min-width: 150px; max-width: 200px;" src="data:image;base64, @Convert.ToBase64String(news.Image)" />
+                    }
+                    <p>
+                        @news.NewsContext
+                    </p>
+                    <a href="/Home/Details/@news.Id" class="btn btn-sm btn-success">Red More..</a>
+                </div>
+                <hr />
+            }
+
+
+        </div>
+
+
+
+        <div class="col-md-3 text-center" style="background-color: lightblue;">
+
+
+            @foreach (var news in Model.Where(x => x.Side == "Right"))
+            {
+                <div class="text-center">
+                    <h3 style="color: maroon;">@news.Title</h3>
+                    @if (news.Image != null)
+                    {
+                        <img class="img img-thumbnail" style="max-height: 100px; min-height:80px; min-width: 150px; max-width: 200px; " src="data:image;base64, @Convert.ToBase64String(news.Image)" />
+                    }
+                    <p>
+                        @news.NewsContext
+                    </p>
+                    <a href="/Home/Details/@news.Id" class="btn btn-sm btn-success">Red More..</a>
+                </div>
+                <hr />
+            }
+
+
+
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+</div>
